@@ -12,7 +12,7 @@ pipeline {
 						CREATE TABLE KH255051.departments (
 							department_id INT NOT NULL PRIMARY KEY,
 							department_name VARCHAR (30) NOT NULL,
-							location INT DEFAULT NULL);
+							location VARCHAR (100) DEFAULT NULL);
 						'''
 					
 
