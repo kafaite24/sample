@@ -12,9 +12,9 @@ pipeline {
 						CREATE TABLE KH255051.departments (
 							department_id INT NOT NULL PRIMARY KEY,
 							department_name VARCHAR (30) NOT NULL,
-							location INT DEFAULT NULL
+							location INT DEFAULT NULL);
 						'''
-					);
+					
 
 					sqlconnection().execute'''
 						CREATE TABLE KH255051.jobs (
@@ -26,9 +26,9 @@ pipeline {
 							NO CYCLE) PRIMARY KEY,
 							job_title VARCHAR (35) NOT NULL,
 							min_salary DECIMAL (8, 2) DEFAULT NULL,
-							max_salary DECIMAL (8, 2) DEFAULT NULL
+							max_salary DECIMAL (8, 2) DEFAULT NULL);
 						'''
-					);
+					
 					
 					sqlconnection().execute'''
 						CREATE TABLE KH255051.staff (
@@ -63,9 +63,9 @@ pipeline {
 							passcode VARCHAR (100) DEFAULT NULL,
 							job_id INT NOT NULL,
 							manager_id INT DEFAULT NULL,
-							department_id INT DEFAULT NULL
+							department_id INT DEFAULT NULL);
 						'''
-					);
+				
 					}
 				}
 		}
