@@ -4,7 +4,7 @@ pipeline {
     agent any
     stages {
        
-		stage('Create tables'){
+		stage('Create tabless'){
 			 steps{
                 script{
 				
