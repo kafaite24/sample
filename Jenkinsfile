@@ -7,8 +7,8 @@ pipeline {
 		stage('Create tabless'){
 			 steps{
                 script{
-			def string= "SELECT CASE WHEN (SELECT count(*) FROM staff)=100 THEN 1 ELSE 0 END" 
-			println(string)	
+		 
+			println(sqlconnection().execute'''SELECT CASE WHEN (SELECT count(*) FROM staff)=100 THEN 1 ELSE 0 END ''');
 }}}}}
 
 @NonCPS
