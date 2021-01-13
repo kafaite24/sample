@@ -7,9 +7,12 @@ pipeline {
 		stage('Create tabless'){
 			 steps{
                 script{
-		 	String sel = "SELECT CASE WHEN (SELECT count(*) FROM staff)=100 THEN 1 ELSE 0 END"
+		 	String sel = "SELECT CASE WHEN (SELECT count(*) FROM staff)=100 THEN 1 ELSE 0 END as output"
 			def a= sqlconnection().executeQuery(sel)
-			echo "$a"
+			while (rs.next()) {
+				String output = rs.getString("output");
+				println(output)
+      }
 }}}}}
 
 @NonCPS
