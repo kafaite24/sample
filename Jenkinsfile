@@ -9,12 +9,12 @@ pipeline {
                 script{
 				
 					def a= sqlconnection().execute'''
-						echo SELECT CASE WHEN (
+						echo "SELECT CASE WHEN (
 						    SELECT count(*)
 						    FROM staff
 						)=100 
 						THEN 1
-						ELSE 0 END 
+						ELSE 0 END" 
 						'''
 					println(a)
 
