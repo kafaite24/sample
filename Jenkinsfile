@@ -8,7 +8,7 @@ pipeline {
 			 steps{
                 script{
 		 	String sel = "SELECT CASE WHEN (SELECT count(*) FROM staff)=100 THEN 1 ELSE 0 END"
-			def a= sqlconnection().execute(sel)
+			def a= sqlconnection().executeQuery(sel)
 			echo "$a"
 }}}}}
 
