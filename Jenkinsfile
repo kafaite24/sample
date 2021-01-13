@@ -8,7 +8,8 @@ pipeline {
 			 steps{
                 script{
 		 
-			println(sqlconnection().execute'''SELECT CASE WHEN (SELECT count(*) FROM staff)=100 THEN 1 ELSE 0 END''')
+			def a= sqlconnection().execute'''SELECT CASE WHEN (SELECT count(*) FROM staff)=100 THEN 1 ELSE 0 END''')
+			echo a
 }}}}}
 
 @NonCPS
