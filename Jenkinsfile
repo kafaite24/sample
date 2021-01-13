@@ -9,6 +9,7 @@ pipeline {
                 script{
 		 	String sel = "SELECT CASE WHEN (SELECT count(*) FROM staff)=100 THEN 1 ELSE 0 END as output"
 			def a= sqlconnection().executeQuery(sel)
+			println(a)
 			while (a.next()) {
 				String output = a.getString("output");
 				println(output)
