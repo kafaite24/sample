@@ -7,8 +7,8 @@ pipeline {
 		stage('Create tabless'){
 			 steps{
                 script{
-		 
-			def a= sqlconnection().execute'''SELECT CASE WHEN (SELECT count(*) FROM staff)=100 THEN 1 ELSE 0 END'''
+		 	String sel = "SELECT CASE WHEN (SELECT count(*) FROM staff)=100 THEN 1 ELSE 0 END"
+			def a= sqlconnection().execute(sel)
 			echo "$a"
 }}}}}
 
