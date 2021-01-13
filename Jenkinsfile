@@ -21,7 +21,7 @@ pipeline {
     def sqlconnection() {
         String URL = "jdbc:teradata://wbtlabserver.teradata.com/KH255051";
         String username = "KH255051";
-        String password = "${dbc_password}";
+        String password = "bSji5jkv";
         String driver= "com.teradata.jdbc.TeraDriver"
         
         echo "Building connection"
