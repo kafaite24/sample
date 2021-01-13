@@ -13,7 +13,7 @@ pipeline {
 			String output = a.getString("output");
 			println(output)
       }
-}}}}}
+}}}}
 
 @NonCPS
     def sqlconnection() {
