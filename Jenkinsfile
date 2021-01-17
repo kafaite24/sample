@@ -12,17 +12,15 @@ pipeline {
                 script{
 		 	sqlconnection().eachRow("SELECT CASE WHEN (SELECT count(*) FROM employees_final)=100 THEN 1 ELSE 0 END as output") { row ->
 				output= "All rows inserted in employees table"+"\t\t\t$row.output"
-				writeFile(file: 'output.txt', text: output)
 		}
 			sqlconnection().eachRow("SELECT CASE WHEN (SELECT count(*) FROM departments_final)=4 THEN 1 ELSE 0 END as output") { row ->
 				output= "All rows inserted in departments table"+"\t\t\t$row.output"
-				writeFile(file: 'output.txt', text: output)
 		}
 			sqlconnection().eachRow("SELECT CASE WHEN (SELECT count(*) FROM jobs_final)=5 THEN 1 ELSE 0 END as output") { row ->
 				output= "All rows inserted in jobs table"+"\t\t\t$row.output"
-				writeFile(file: 'output.txt', text: output)
 		}
-			
+		writeFile(file: 'output.txt', text: output)
+
                   	
       }
 }}}
