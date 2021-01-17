@@ -23,6 +23,12 @@ pipeline {
 		stage('Create tabless'){
 			 steps{
                 script{
+					sqlconnection()    	
+      }
+}}
+		stage('Create tabless'){
+			 steps{
+                script{
 					sqlconn.eachRow("SELECT CASE WHEN (SELECT count(*) FROM staff)=100 THEN 1 ELSE 0 END as output") { row ->
 					output= "All rows inserted"+"\t\t\t$row.output"
 					}
