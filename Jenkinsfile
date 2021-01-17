@@ -19,12 +19,7 @@ pipeline {
 	
     
     stages {
-	    stage('build sql connection'){
-	    	steps{
-				script{
-					println(${sqlconn})
-				}
-	    }}
+	  
 		stage('Create tabless'){
 			 steps{
                 script{
