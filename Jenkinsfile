@@ -25,7 +25,7 @@ pipeline {
 				script{
 					println(${sqlconn})
 				}
-	    }
+	    }}
 		stage('Create tabless'){
 			 steps{
                 script{
@@ -36,5 +36,5 @@ pipeline {
 				sql.close()     	
       }
 }}}
-}}
+}
 
