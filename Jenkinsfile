@@ -11,7 +11,7 @@ pipeline {
 				println "$row.output"
 				
 		}
-			def data = "Hello World\nSecond line\n" + date
+			def data = "Hello World\nSecond line\n"
                   	writeFile(file: 'zorg.txt', text: data)
       }
 }}}}
