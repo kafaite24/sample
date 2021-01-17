@@ -20,7 +20,7 @@ pipeline {
     
     stages {
 	  
-		stage('Create tabless'){
+		stage('database'){
 			steps{
 				sqlconnection()    	
 		}}
