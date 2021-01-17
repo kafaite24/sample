@@ -23,7 +23,7 @@ pipeline {
 		}
 		writeFile(file: 'output.txt', text: output)
 		f = new file ("output.txt")
-		f.append('newline added!\n)
+		f.append("newline added!\n")
 
                   	
       }
