@@ -28,8 +28,7 @@ pipeline {
 			 steps{
                 script{
 			println(${sqlconn})
-					
-				sqlconn.close()     	
+					  	
       }
 }}}
 }
