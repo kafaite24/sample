@@ -20,12 +20,10 @@ pipeline {
     
     stages {
 	  
-		stage('database'){
-			 steps{
-                script{
-					sqlconnection()    	
-      }
-}}
+		stage('Create tabless'){
+			steps{
+				sqlconnection()    	
+		}}
 		stage('Create tabless'){
 			 steps{
                 script{
