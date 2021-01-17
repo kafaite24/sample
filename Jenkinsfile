@@ -1,5 +1,9 @@
 import groovy.sql.Sql
 
+
+@Field 
+def output = ""
+
 pipeline {
     agent any
     stages {
@@ -8,9 +12,9 @@ pipeline {
 			 steps{
                 script{
 		 	sqlconnection().eachRow("SELECT CASE WHEN (SELECT count(*) FROM staff)=100 THEN 1 ELSE 0 END as output") { row ->
-				println("ahha")
+				output= "$row.output"
 		}
-			writeFile(file: 'output.txt', text: "hello")
+			writeFile(file: 'output.txt', text: output)
                   	
       }
 }}}
