@@ -11,7 +11,7 @@ pipeline {
 			 steps{
 				
                 script{
-			f = new File ("output.txt")
+			f = new File ("output1.txt")
 		 	sqlconnection().eachRow("SELECT CASE WHEN (SELECT count(*) FROM employees_final)=100 THEN 1 ELSE 0 END as output") { row ->
 				output= "All rows inserted in employees table"+"\t\t\t$row.output"
 				f.append("newline added!\n")
@@ -32,7 +32,7 @@ pipeline {
 }}}
 	post {
                 always {
-                    archiveArtifacts artifacts: 'output.txt', allowEmptyArchive: true
+                    archiveArtifacts artifacts: 'output1.txt', allowEmptyArchive: true
                 }
             }
 }
