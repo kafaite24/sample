@@ -1,5 +1,5 @@
 import groovy.sql.Sql
-import java.io.File 
+
 
 output = ""
 
@@ -9,30 +9,26 @@ pipeline {
        
 		stage('Create tabless'){
 			 steps{
-				
                 script{
-			f = new File ("output1.txt")
 		 	sqlconnection().eachRow("SELECT CASE WHEN (SELECT count(*) FROM employees_final)=100 THEN 1 ELSE 0 END as output") { row ->
-				output= "All rows inserted in employees table"+"\t\t\t$row.output"
-				f.append("newline added!\n")
+				output= "All rows inserted in employees table"+"\t\t\t$row.output\n"
 		}
-		
+		writeFile(file: 'output.txt', text: output)
 			sqlconnection().eachRow("SELECT CASE WHEN (SELECT count(*) FROM departments_final)=4 THEN 1 ELSE 0 END as output") { row ->
-				output= "All rows inserted in departments table"+"\t\t\t$row.output"
+				output += "All rows inserted in departments table"+"\t\t\t$row.output\n"
 		}
-		
+		writeFile(file: 'output.txt', text: output)
 			sqlconnection().eachRow("SELECT CASE WHEN (SELECT count(*) FROM jobs_final)=5 THEN 1 ELSE 0 END as output") { row ->
-				output= "All rows inserted in jobs table"+"\t\t\t$row.output"
+				output += "All rows inserted in jobs table"+"\t\t\t$row.output"
 		}
-		f.append("newline added!\n")
-		
+		writeFile(file: 'output.txt', text: output)
 
                   	
       }
 }}}
 	post {
                 always {
-                    archiveArtifacts artifacts: 'output1.txt', allowEmptyArchive: true
+                    archiveArtifacts artifacts: 'output.txt', allowEmptyArchive: true
                 }
             }
 }
