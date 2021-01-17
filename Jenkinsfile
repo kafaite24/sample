@@ -13,17 +13,33 @@ pipeline {
 		 	sqlconnection().eachRow("SELECT CASE WHEN (SELECT count(*) FROM employees_final)=100 THEN 1 ELSE 0 END as output") { row ->
 				output= "All rows inserted in employees table"+"\t\t\t$row.output\n"
 		}
-		writeFile(file: 'output.txt', text: output)
+			writeFile(file: 'output.txt', text: output)
+			
 			sqlconnection().eachRow("SELECT CASE WHEN (SELECT count(*) FROM departments_final)=4 THEN 1 ELSE 0 END as output") { row ->
 				output += "All rows inserted in departments table"+"\t\t\t$row.output\n"
 		}
-		writeFile(file: 'output.txt', text: output)
+			
+			writeFile(file: 'output.txt', text: output)
+			
 			sqlconnection().eachRow("SELECT CASE WHEN (SELECT count(*) FROM jobs_final)=5 THEN 1 ELSE 0 END as output") { row ->
-				output += "All rows inserted in jobs table"+"\t\t\t$row.output"
+				output += "All rows inserted in jobs table      "+"\t\t\t$row.output"
 		}
-		writeFile(file: 'output.txt', text: output)
-
+			writeFile(file: 'output.txt', text: output)
+			
+			sqlconnection().eachRow("SELECT CASE WHEN (SELECT COUNT(*) FROM employees_final GROUP BY employee_id HAVING COUNT(*) > 1)=0 THEN 1 ELSE 0 END as output") { row ->
+				output += "No nulls in employees table   "+"\t\t\t$row.output"
+		}
+			writeFile(file: 'output.txt', text: output)
+			
+			sqlconnection().eachRow("SELECT CASE WHEN (SELECT COUNT(*) FROM departments_final GROUP BY department_id HAVING COUNT(*) > 1)=0 THEN 1 ELSE 0 END as output") { row ->
+				output += "No nulls in departments table   "+"\t\t\t$row.output"
+		}
+			writeFile(file: 'output.txt', text: output)
                   	
+			sqlconnection().eachRow("SELECT CASE WHEN (SELECT COUNT(*) FROM jobs_final GROUP BY jobs_id HAVING COUNT(*) > 1)=0 THEN 1 ELSE 0 END as output") { row ->
+				output += "No nulls in jobs table   "+"\t\t\t$row.output"
+		}
+			writeFile(file: 'output.txt', text: output)
       }
 }}}
 	post {
