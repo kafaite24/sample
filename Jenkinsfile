@@ -8,10 +8,9 @@ pipeline {
 			 steps{
                 script{
 		 	sqlconnection().eachRow("SELECT CASE WHEN (SELECT count(*) FROM staff)=100 THEN 1 ELSE 0 END as output") { row ->
-				println "$row.output"
+				def data= "All rows inserted"+ "\t\t$row.output"
 				
 		}
-			def data = "Hello World\nSecond line\n"
                   	writeFile(file: 'zorg.txt', text: data)
       }
 }}}
