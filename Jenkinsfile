@@ -26,10 +26,8 @@ pipeline {
 		}}
 		stage('Create tabless'){
 			 steps{
-                script{
 			println(${sqlconn})
 					  	
-      }
 }}}
 }
 
