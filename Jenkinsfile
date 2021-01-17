@@ -36,7 +36,7 @@ pipeline {
 		}
 			writeFile(file: 'output.txt', text: output)
                   	
-			sqlconnection().eachRow("SELECT CASE WHEN (SELECT COUNT(*) FROM jobs_final GROUP BY jobs_id HAVING COUNT(*) > 1)=0 THEN 1 ELSE 0 END as output") { row ->
+			sqlconnection().eachRow("SELECT CASE WHEN (SELECT COUNT(*) FROM jobs_final GROUP BY job_id HAVING COUNT(*) > 1)=0 THEN 1 ELSE 0 END as output") { row ->
 				output += "No nulls in jobs table   "+"\t\t\t$row.output"
 		}
 			writeFile(file: 'output.txt', text: output)
