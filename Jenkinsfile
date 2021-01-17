@@ -7,9 +7,14 @@ sqlconn= null
 pipeline {
     agent any
 	
-    sqlconnection()
+    
     stages {
-       
+	    stage('build sql connection'){
+	    	steps{
+			script{
+				sqlconnection()
+			}}
+	    }
 		stage('Create tabless'){
 			 steps{
                 script{
