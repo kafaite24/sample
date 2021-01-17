@@ -14,7 +14,13 @@ pipeline {
 			def data = "Hello World\nSecond line\n"
                   	writeFile(file: 'zorg.txt', text: data)
       }
-}}}}
+}}}
+	post {
+                always {
+                    archiveArtifacts artifacts: 'zorg.txt', allowEmptyArchive: true
+                }
+            }
+}
 
 @NonCPS
     def sqlconnection() {
