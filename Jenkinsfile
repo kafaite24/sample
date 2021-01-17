@@ -1,8 +1,7 @@
 import groovy.sql.Sql
 
 
-@Field 
-def output = ""
+output = ""
 
 pipeline {
     agent any
