@@ -9,8 +9,9 @@ pipeline {
        
 		stage('Create tabless'){
 			 steps{
-				f = new File ("output.txt")
+				
                 script{
+			f = new File ("output.txt")
 		 	sqlconnection().eachRow("SELECT CASE WHEN (SELECT count(*) FROM employees_final)=100 THEN 1 ELSE 0 END as output") { row ->
 				output= "All rows inserted in employees table"+"\t\t\t$row.output"
 				f.append("newline added!\n")
