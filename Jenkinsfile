@@ -9,14 +9,14 @@ pipeline {
                 script{
 		 	sqlconnection().eachRow("SELECT CASE WHEN (SELECT count(*) FROM staff)=100 THEN 1 ELSE 0 END as output") { row ->
 				def data= "All rows inserted"+ "\t\t$row.output"
-				
+				writeFile(file: 'output.txt', text: data)
 		}
-                  	writeFile(file: 'zorg.txt', text: data)
+                  	
       }
 }}}
 	post {
                 always {
-                    archiveArtifacts artifacts: 'zorg.txt', allowEmptyArchive: true
+                    archiveArtifacts artifacts: 'output.txt', allowEmptyArchive: true
                 }
             }
 }
