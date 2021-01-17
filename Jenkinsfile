@@ -21,7 +21,6 @@ pipeline {
     stages {
 	    stage('build sql connection'){
 	    	steps{
-				sqlconnection()
 				script{
 					println(${sqlconn})
 				}
@@ -33,7 +32,7 @@ pipeline {
 					output= "All rows inserted"+"\t\t\t$row.output"
 					}
 				writeFile(file: 'output.txt', text: output)
-				sql.close()     	
+				sqlconn.close()     	
       }
 }}}
 }
