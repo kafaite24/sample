@@ -22,7 +22,7 @@ pipeline {
 				output= "All rows inserted in jobs table"+"\t\t\t$row.output"
 		}
 		writeFile(file: 'output.txt', text: output)
-		f = new file ('output.txt")
+		f = new file ("output.txt")
 		f.append('newline added!\n)
 
                   	
