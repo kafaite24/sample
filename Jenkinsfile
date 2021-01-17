@@ -22,7 +22,10 @@ pipeline {
 	  
 		stage('database'){
 			steps{
-				sqlconnection()    	
+				sqlconnection()
+				script{
+					echo sqlconn
+				}
 		}}
 		stage('Create tabless'){
 			 steps{
