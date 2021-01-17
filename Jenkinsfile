@@ -27,7 +27,7 @@ pipeline {
 			writeFile(file: 'output.txt', text: output)
 			
 			sqlconnection().eachRow("SELECT CASE WHEN (SELECT COUNT(*) FROM employees_final GROUP BY employee_id HAVING COUNT(*) > 1) is null THEN 1 ELSE 0 END as output") { row ->
-				output += "No duplicates in employees table   "+"\t\t\t\t$row.output\n"
+				output += "No duplicates in employees table   "+"\t\t\t$row.output\n"
 		}
 			writeFile(file: 'output.txt', text: output)
 			
@@ -47,7 +47,7 @@ pipeline {
 			writeFile(file: 'output.txt', text: output)
 			
 			sqlconnection().eachRow("SELECT CASE WHEN (SELECT count(*) FROM dbc.columns WHERE tablename= 'departments_final' and columnname IS NULL)=0 then 1 else 0 end as output") { row ->
-				output += "No nulls in departments table   "+"\t\t\t\t$row.output\n"
+				output += "No nulls in departments table   "+"\t\t\t$row.output\n"
 		}
 			writeFile(file: 'output.txt', text: output)
 			
