@@ -2,12 +2,12 @@ import groovy.sql.Sql
 
 
 output = ""
-sql_connection= null
+sqlconn= null
 
 pipeline {
     agent any
 	
-	sql_connection= sqlconnection()
+    sqlconnection()
     stages {
        
 		stage('Create tabless'){
@@ -35,6 +35,6 @@ pipeline {
         String driver= "com.teradata.jdbc.TeraDriver"
         
         echo "Building connection"
-        def sqlconn = Sql.newInstance(URL, username, password, driver)
+        sqlconn = Sql.newInstance(URL, username, password, driver)
         return sqlconn
     }
