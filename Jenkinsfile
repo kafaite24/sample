@@ -21,17 +21,10 @@ pipeline {
 					sqlconn.eachRow("SELECT CASE WHEN (SELECT count(*) FROM staff)=100 THEN 1 ELSE 0 END as output") { row ->
 					output= "All rows inserted"+"\t\t\t$row.output"
 		}
-			
 			writeFile(file: 'output.txt', text: output)
-			sql.close()
-                  	
+            sql.close()     	
       }
 }}}
-	post {
-                always {
-                    archiveArtifacts artifacts: 'output.txt', allowEmptyArchive: true
-                }
-            }
 }
 
 @NonCPS
