@@ -8,8 +8,9 @@ pipeline {
 			 steps{
                 script{
 		 	sqlconnection().eachRow("SELECT CASE WHEN (SELECT count(*) FROM staff)=100 THEN 1 ELSE 0 END as output") { row ->
-				writeFile(file: 'output.txt', text: "$row.output")
+				println("ahha")
 		}
+			writeFile(file: 'output.txt', text: "hello")
                   	
       }
 }}}
