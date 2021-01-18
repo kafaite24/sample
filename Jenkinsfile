@@ -16,6 +16,7 @@ pipeline {
 				output= "All rows inserted in employees table"+"\t\t\t$row.output\n"
 		}
 			writeFile(file: 'output.txt', text: output)
+			sql.close()
 			
 		
       }
