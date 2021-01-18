@@ -13,7 +13,7 @@ pipeline {
                 script{
 		
 		 	sqlconnection().eachRow("SELECT COUNT(*) FROM dbc.TABLES WHERE TABLENAME = 'jobs_final' and databasename='KH255051'") { row ->
-				println($row.output)
+				println("$row.output")
 		}
 
       }
