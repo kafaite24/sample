@@ -15,7 +15,7 @@ pipeline {
 		 	sqlconnection().eachRow("SELECT COUNT(*) as output FROM dbc.TABLES WHERE TABLENAME = 'jobs_final' and databasename='KH255051'") { row ->
 				def table= "$row.output"
 				println("${table}")
-				if(table==1){
+				if("${table}"==1){
 					println('table exists')
 				}
 		}
