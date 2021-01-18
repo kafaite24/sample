@@ -58,6 +58,11 @@ pipeline {
 		}
 			writeFile(file: 'output.txt', text: output)
 			
+			sqlconnection().eachRow("select case when (select count(gender) from employees_final where gender in ('Male', 'Female'))=0 then 1 else 0 end as output") { row ->
+				output += "Gender column values changed to 'M' and 'F'"+"\t\t$row.output\n"
+		}
+			writeFile(file: 'output.txt', text: output)
+			
 		
       }
 }}}
