@@ -16,7 +16,9 @@ pipeline {
 				def table= "$row.output"
 				println("${table}")
 				if("${table}"=="1"){
-					println('table exists')
+					sqlconnection().execute'''
+						drop table jobs_final
+					'''
 				}
 		}
 
