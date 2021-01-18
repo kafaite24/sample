@@ -2,7 +2,7 @@ import groovy.sql.Sql
 
 
 output = ""
-sql= null
+
 pipeline {
     agent any
     stages {
@@ -11,7 +11,7 @@ pipeline {
 			 steps{
 				 
                 script{
-			sql= sqlconnection()
+			def sql= sqlconnection()
 		 	sql.eachRow("SELECT CASE WHEN (SELECT count(*) FROM employees_final)=100 THEN 1 ELSE 0 END as output") { row ->
 				output= "All rows inserted in employees table"+"\t\t\t$row.output\n"
 		}
