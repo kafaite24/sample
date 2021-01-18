@@ -2,20 +2,22 @@ import groovy.sql.Sql
 
 
 output = ""
-
+sql= null
 pipeline {
     agent any
     stages {
        
 		stage('Create tabless'){
 			 steps{
+				 
                 script{
-		 	sqlconnection().eachRow("SELECT CASE WHEN (SELECT count(*) FROM employees_final)=100 THEN 1 ELSE 0 END as output") { row ->
+			sql= sqlconnection()
+		 	sql.eachRow("SELECT CASE WHEN (SELECT count(*) FROM employees_final)=100 THEN 1 ELSE 0 END as output") { row ->
 				output= "All rows inserted in employees table"+"\t\t\t$row.output\n"
 		}
 			writeFile(file: 'output.txt', text: output)
 			
-			sqlconnection().eachRow("SELECT CASE WHEN (SELECT count(*) FROM departments_final)=4 THEN 1 ELSE 0 END as output") { row ->
+			sql.eachRow("SELECT CASE WHEN (SELECT count(*) FROM departments_final)=4 THEN 1 ELSE 0 END as output") { row ->
 				output += "All rows inserted in departments table"+"\t\t\t$row.output\n"
 		}
 			
