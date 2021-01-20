@@ -62,8 +62,7 @@ pipeline {
 			
 			println("${flag}")
 			
-			if("${flag}")
-			==1){
+			if("${flag}"==1){
 				error('Build Failed')
 			}
       }
