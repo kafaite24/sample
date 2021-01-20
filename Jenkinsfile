@@ -7,7 +7,7 @@ pipeline {
     agent any
     stages {
        
-		stage('Create tabless'){
+		stage('Run test cases'){
 			 steps{
 				 
                 script{
