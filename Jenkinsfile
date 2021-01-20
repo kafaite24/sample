@@ -17,8 +17,10 @@ pipeline {
 				
 				if("${row.output}"=="Failed"){
 					flag=1}
+				
+				println("${row.output}")
 		}
-			
+			println("${flag}")
 			writeFile(file: 'output.txt', text: output)
 			
 			sqlconnection().eachRow("select case when (select count(*) from departments_staging where DateAdded= current_timestamp) = (select count(*) from departments_landing ) then 'Passed' else 'Failed' end as output") { row ->
