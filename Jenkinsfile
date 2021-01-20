@@ -63,7 +63,7 @@ pipeline {
 		}
 			writeFile(file: 'output.txt', text: output)
 			
-			if("${flag}"==1){
+			if("${flag}"=="1"){
 				error('Build Failed')
 			}
       }
