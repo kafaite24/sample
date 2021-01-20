@@ -23,7 +23,7 @@ pipeline {
 			
 			writeFile(file: 'output.txt', text: output)
 			
-			sqlconnection().eachRow("SELECT CASE WHEN (select case when (select count(*) from jobs_staging where DateAdded= current_date) = (select count(*) from jobs_landing ) then 'Passed' else 'Failed' end as output") { row ->
+			sqlconnection().eachRow("select case when (select count(*) from jobs_staging where DateAdded= current_date) = (select count(*) from jobs_landing ) then 'Passed' else 'Failed' end as output") { row ->
 				output += "All rows inserted in jobs table      "+"\t\t\t$row.output\n"
 		}
 			writeFile(file: 'output.txt', text: output)
